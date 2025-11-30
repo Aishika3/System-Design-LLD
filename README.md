@@ -252,3 +252,12 @@ class PaymentService {
     IPayment* method;   // depends on interface, not implementation
 };
 ```
+## ⭐ Summary Table
+
+| Principle | Meaning                         | Benefit                       |
+|-----------|----------------------------------|-------------------------------|
+| **SRP**   | One class = one job              | Clean, readable code          |
+| **OCP**   | Extend without modifying         | No breaking existing code     |
+| **LSP**   | Subclasses behave like parent    | No runtime bugs               |
+| **ISP**   | Many small interfaces            | No unnecessary methods        |
+| **DIP**   | Depend on interfaces             | Flexible, easily swappable    |
