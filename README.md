@@ -147,3 +147,54 @@ class Penguin : public Bird {
     // No fly() → correct behavior
 };
 ```
+## 4️⃣ I — Interface Segregation Principle (ISP)
+
+**Don’t force a class to implement methods it doesn’t need.**
+
+---
+
+### ❌ Bad Example
+
+A large, overloaded interface forces every class to implement all methods:
+
+```cpp
+class Animal {
+public:
+    virtual void fly() = 0;
+    virtual void swim() = 0;
+    virtual void run() = 0;
+};
+```
+
+### ❌ Why This Causes Problems
+
+Forcing every animal to implement every method leads to incorrect behavior:
+
+- A **dog** must implement `fly()` — ❌ not valid  
+- A **fish** must implement `run()` — ❌ not valid  
+
+This violates the **Interface Segregation Principle (ISP)** because  
+classes are forced to depend on methods they **do not use**.
+
+---
+
+### ✔ Good Example (Correct Approach)
+
+Split the large interface into smaller, focused, behavior-specific interfaces:
+
+```cpp
+class Runnable {
+public:
+    virtual void run() = 0;
+};
+
+class Flyable {
+public:
+    virtual void fly() = 0;
+};
+
+class Swimmable {
+public:
+    virtual void swim() = 0;
+};
+```
