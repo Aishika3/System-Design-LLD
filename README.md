@@ -116,3 +116,34 @@ So calling:
 ```cpp
 penguin.fly();  // ❌ breaks logic
 ```
+### ❌ Why This Violates LSP
+
+This breaks the Liskov Substitution Principle because  
+**the child class (Penguin) removes valid behavior of the parent (Bird).**  
+If a parent can `fly()`, the child must not eliminate that expected behavior.
+
+---
+
+### ✔ Good Solution
+
+Introduce a `Flyable` interface and allow **only flying birds** to implement it.
+
+```cpp
+class Flyable {
+public:
+    virtual void fly() = 0;
+};
+
+class Bird {};
+
+class Sparrow : public Bird, public Flyable {
+public:
+    void fly() override {
+        /* fly logic */
+    }
+};
+
+class Penguin : public Bird {
+    // No fly() → correct behavior
+};
+```
