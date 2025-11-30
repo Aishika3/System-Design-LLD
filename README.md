@@ -2,8 +2,6 @@
 
 # ⭐ SOLID Principles – Full Notes
 
-Here are **clean, easy, interview-ready notes for SOLID principles** — explained in simple language with examples and real-world use cases.
-
 ---
 
 ## 📌 What is SOLID?
@@ -98,6 +96,8 @@ public:
     }
 };
 ```
+---
+
 ## 3️⃣ L — Liskov Substitution Principle (LSP)
 
 **Child classes should be usable in place of parent classes _without breaking behavior_.**
@@ -147,6 +147,10 @@ class Penguin : public Bird {
     // No fly() → correct behavior
 };
 ```
+
+--- 
+
+
 ## 4️⃣ I — Interface Segregation Principle (ISP)
 
 **Don’t force a class to implement methods it doesn’t need.**
@@ -198,6 +202,9 @@ public:
     virtual void swim() = 0;
 };
 ```
+
+---
+
 
 ## 5️⃣ D — Dependency Inversion Principle (DIP)
 
