@@ -98,3 +98,21 @@ public:
     }
 };
 ```
+## 3️⃣ L — Liskov Substitution Principle (LSP)
+
+**Child classes should be usable in place of parent classes _without breaking behavior_.**
+
+---
+
+### ❌ Bad Example (Classic)
+
+Penguin inherits `Bird`, but:
+
+- Birds can fly  
+- Penguins **cannot**
+
+So calling:
+
+```cpp
+penguin.fly();  // ❌ breaks logic
+```
