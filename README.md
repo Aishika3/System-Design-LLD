@@ -198,3 +198,57 @@ public:
     virtual void swim() = 0;
 };
 ```
+
+## 5️⃣ D — Dependency Inversion Principle (DIP)
+
+**High-level modules should depend on abstractions, not concrete classes.**
+
+Meaning:  
+➡️ Code should rely on **interfaces**, not hard-coded implementations.
+
+---
+
+### ❌ Bad Example (Tightly Coupled)
+
+```cpp
+class PaymentService {
+    RazorpayPayment rp;  // tightly coupled to Razorpay
+};
+```
+
+### ❌ Problem
+
+If you want to switch to **Stripe**, you must rewrite the entire `PaymentService` class —  
+this is **tight coupling** and a **bad design**.
+
+---
+
+### ✔ Good Example (Correct Approach)
+
+Create an abstraction (`IPayment`) and let every payment provider implement it:
+
+```cpp
+class IPayment {
+public:
+    virtual void pay() = 0;
+};
+
+class Razorpay : public IPayment {
+    // Razorpay pay logic
+};
+
+class Stripe : public IPayment {
+    // Stripe pay logic
+};
+```
+
+### ✔ Decoupling the Service
+
+By depending on the **abstraction** (`IPayment`) instead of concrete classes like Razorpay or Stripe,  
+the service becomes flexible, maintainable, and easy to extend.
+
+```cpp
+class PaymentService {
+    IPayment* method;   // depends on interface, not implementation
+};
+```
