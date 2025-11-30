@@ -59,4 +59,29 @@ double area(Shape* s) {
     else if(s->type == "rectangle") { ... }
 }
 ```
+## 🚫 Bad Example (Violates OCP)
 
+Adding a new shape requires **modifying** `area()` logic again and again →  
+This **breaks Open/Closed Principle (OCP)**.
+
+---
+
+## ✅ Good Example (Follows OCP Using Polymorphism)
+
+We create a **base class** with a virtual `area()` method.  
+Each shape implements its own version.  
+Now adding a new shape does **not** modify existing code.
+
+```cpp
+class Shape {
+public:
+    virtual double area() = 0;   // Abstract method
+};
+
+class Circle : public Shape {
+public:
+    double area() override {
+        // Circle area logic
+    }
+};
+```
