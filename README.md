@@ -85,3 +85,16 @@ public:
     }
 };
 ```
+### ➕ Adding New Shapes (Example: `Triangle`)
+
+Using inheritance, we simply create a new class that extends `Shape`  
+and implements its own `area()` method.
+
+```cpp
+class Triangle : public Shape {
+public:
+    double area() override {
+        // Triangle area logic
+    }
+};
+```
