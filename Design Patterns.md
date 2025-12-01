@@ -208,3 +208,35 @@ User u = User::Builder()
             .setAge(22)
             .build();
 ```
+## #️⃣ 5. Prototype Pattern
+
+### ✅ What it is
+
+The **Prototype Pattern** is used to **clone existing objects** instead of creating them from scratch.  
+It provides a mechanism to duplicate objects efficiently.
+
+---
+
+### 📌 Good When
+
+- Object creation is **expensive or time-consuming**
+- Many similar objects are needed
+- Copying is faster and more efficient than constructing new instances
+
+---
+
+### ✔ Example
+
+```cpp
+class Shape {
+public:
+    virtual Shape* clone() = 0;
+};
+class Circle : public Shape {
+public:
+    Shape* clone() {
+        return new Circle(*this);  // uses copy constructor
+    }
+};
+
+```
